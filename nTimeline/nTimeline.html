@@ -1,0 +1,25 @@
+<div id="nTimeline_debugger" style="{{ALIGN}}">
+	<div data-role="wrap" class="ui-widget-header">
+		<div data-role="timeline"></div>
+		<div data-role="controller">
+			<button data-role="beginning">go to beginning</button>
+			<button data-role="rewind">rewind</button>
+			<button data-role="play">{{PLAY_MODE}}</button>
+			<button data-role="stop">stop</button>
+			<button data-role="forward">fast forward</button>
+			<button data-role="end">go to end</button>
+			<button data-role="align">{{BTN_ALIGN}}</button>
+			<input data-role="autorun" type="checkbox" id="nTimeline_autorun"><label for="nTimeline_autorun">autorun</label>
+			<input data-role="repeat" type="checkbox" id="nTimeline_repeat"><label for="nTimeline_repeat">repeat</label>
+		</div>
+		<div data-role="duration">
+			<span>&nbsp;Duration&nbsp;:&nbsp;&nbsp;</span>
+			<span data-role="duration_cur"></span>
+			<span data-role="duration_total" style="color: #888;"></span>
+		</div>
+	</div>
+	<div data-role="display" class="ui-widget-header">
+		<span data-role="name">{{INFO}}</span>
+		<button data-role="btn">close</button>
+	</div>
+</div>

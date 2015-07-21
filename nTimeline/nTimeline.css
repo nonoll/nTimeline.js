@@ -1,0 +1,7 @@
+div#nTimeline_area { position: relative; width: 100%; height: 115px; background: #fff; }
+div#nTimeline_debugger { position: fixed; left: 0px; width: 100%; height: 115px; z-index: 99999; }
+div#nTimeline_debugger div[data-role="wrap"] { width: 100%; text-align: center; }
+div#nTimeline_debugger div[data-role="wrap"] > div[data-role="timeline"] { width: 95%; margin: 8px 2.5% 8px 2.5%; }
+div#nTimeline_debugger div[data-role="wrap"] > div[data-role="controller"] { display: inline-block; margin: 8px 8px 16px 8px; }
+div#nTimeline_debugger div[data-role="wrap"] > div[data-role="duration"] { display: inline-block; margin: 8px 8px 16px 8px; }
+div#nTimeline_debugger div[data-role="display"] { text-align: right; }
