@@ -5,18 +5,21 @@ GSAP - Timeline 애니메이션 컨트롤러 UI 구성을 위한 플러그인
 
 [크롬 로컬 ajax 설정]( http://blog.naver.com/nonoll88/220302452764 "크롬 로컬 ajax 설정" ) 참조
 
+# Demo
+[Demo]( http://nonoll.github.io/nTimeline.js/demo.html "Demo" )
+
 #Screenshot
-![ScreenShot](/screenshot/1.png)
+![ScreenShot](https://github.com/nonoll/nTimeline.js/raw/master/screenshot/1.png)
 ***
-![ScreenShot](/screenshot/2.png)
+![ScreenShot](https://github.com/nonoll/nTimeline.js/raw/master/screenshot/2.png)
 ***
-![ScreenShot](/screenshot/3.png)
+![ScreenShot](https://github.com/nonoll/nTimeline.js/raw/master/screenshot/3.png)
 ***
-![ScreenShot](/screenshot/4.png)
+![ScreenShot](https://github.com/nonoll/nTimeline.js/raw/master/screenshot/4.png)
 ***
-![ScreenShot](/screenshot/5.png)
+![ScreenShot](https://github.com/nonoll/nTimeline.js/raw/master/screenshot/5.png)
 ***
-![ScreenShot](/screenshot/6.png)
+![ScreenShot](https://github.com/nonoll/nTimeline.js/raw/master/screenshot/6.png)
 
 #Setup
 jquery, GSAP, nTimeline.js 를 웹페이지에 추가
