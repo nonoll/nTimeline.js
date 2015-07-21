@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>nTimeline.js by nonoll</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>nTimeline.js</h1>
+        <h2>GSAP - Timeline 애니메이션 컨트롤러 UI 구성을 위한 플러그인</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/nonoll/nTimeline.js/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/nonoll/nTimeline.js/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/nonoll/nTimeline.js" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="ntimelinejs" class="anchor" href="#ntimelinejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>nTimeline.js</h1>
+
+<p>GSAP - Timeline 애니메이션 컨트롤러 UI 구성을 위한 플러그인</p>
+
+<p>화면 구성 및 플러그인을 ajax로 로드 하므로 로컬에서 테스트시 크롬으로 할것</p>
+
+<p><a href="http://blog.naver.com/nonoll88/220302452764" title="크롬 로컬 ajax 설정">크롬 로컬 ajax 설정</a> 참조</p>
+
+<h1>
+<a id="screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshot</h1>
+
+<p><img src="/screenshot/1.png" alt="ScreenShot"></p>
+
+<hr>
+
+<p><img src="/screenshot/2.png" alt="ScreenShot"></p>
+
+<hr>
+
+<p><img src="/screenshot/3.png" alt="ScreenShot"></p>
+
+<hr>
+
+<p><img src="/screenshot/4.png" alt="ScreenShot"></p>
+
+<hr>
+
+<p><img src="/screenshot/5.png" alt="ScreenShot"></p>
+
+<hr>
+
+<p><img src="/screenshot/6.png" alt="ScreenShot"></p>
+
+<h1>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h1>
+
+<p>jquery, GSAP, nTimeline.js 를 웹페이지에 추가</p>
+
+<div class="highlight highlight-html"><pre>
+
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>./js/jquery-1.8.3.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>./js/TweenMax.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+
+
+
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>./nTimeline/nTimeline.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+</pre></div>
+
+<h1>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h1>
+
+<ul>
+<li><code>window.nTimeline.init</code></li>
+</ul>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-c">// 실행</span>
+<span class="pl-c1">window</span>.nTimeline.init( options );
+
+<span class="pl-c">// 옵션</span>
+options <span class="pl-k">=</span> {
+            timeline        <span class="pl-c1">GSAP</span> <span class="pl-k">-</span> Timeline
+            autorun         Timeline Animate Autorun Flag
+            repeat          Timeline Animate Repeat Flag
+            debug           nTimeline.js Debug log Flag
+            modulePath      nTimeline.js Module Path
+            align           nTimeline.js Debbuger Display Align ( <span class="pl-s"><span class="pl-pds">'</span>top<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>bottom<span class="pl-pds">'</span></span> )
+}</pre></div>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p><strong>1. 기본 사용</strong></p>
+
+<p>window.nTimeline.init( { timeline : GSAP Timeline } );</p>
+
+<p>사용할 GSAP 의 Timeline을 옵션값에 넣어 실행</p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-k">var</span> master <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">TimelineMax</span>();
+    master.<span class="pl-c1">add</span>( sec1() )        <span class="pl-c">// Scene</span>
+            .<span class="pl-c1">add</span>( sec2() )
+            .<span class="pl-c1">add</span>( sec7() )
+            .<span class="pl-c1">add</span>( sec8() )
+            .<span class="pl-c1">add</span>( sec9() )
+            .<span class="pl-c1">add</span>( sec10() );
+<span class="pl-c">/*</span>
+<span class="pl-c">window.nTimeline.init({ </span>
+<span class="pl-c">                        timeline : master</span>
+<span class="pl-c">                        , align: 'top'</span>
+<span class="pl-c">                        });</span>
+<span class="pl-c">*/</span>
+
+<span class="pl-c1">window</span>.nTimeline.init({ 
+                        timeline <span class="pl-k">:</span> master
+                        , autorun <span class="pl-k">:</span> <span class="pl-c1">true</span>
+                        , repeat <span class="pl-k">:</span> <span class="pl-c1">false</span>
+                        , debug <span class="pl-k">:</span> <span class="pl-c1">true</span>
+                        , modulePath <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>./nTimeline/<span class="pl-pds">'</span></span>
+                        , align<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>top<span class="pl-pds">'</span></span>
+                        });</pre></div>
+
+<p><strong>2. 기본 옵션</strong></p>
+
+<div class="highlight highlight-javascript"><pre>
+<span class="pl-c1">window</span>.nTimeline.<span class="pl-c1">options</span> <span class="pl-k">=</span> {
+                                timeline <span class="pl-k">:</span> <span class="pl-c1">null</span>
+                                , autorun <span class="pl-k">:</span> <span class="pl-c1">true</span>
+                                , repeat <span class="pl-k">:</span> <span class="pl-c1">true</span>
+                                , debug <span class="pl-k">:</span> <span class="pl-c1">true</span>
+                                , modulePath <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>./nTimeline/<span class="pl-pds">'</span></span>
+                                , align <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>top<span class="pl-pds">'</span></span> <span class="pl-c">// 'bottom'</span>
+                            };</pre></div>
+
+<h2>
+<a id="history" class="anchor" href="#history" aria-hidden="true"><span class="octicon octicon-link"></span></a>History</h2>
+
+<ol>
+<li>2015.07.21 첫 버전 등록</li>
+</ol>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
