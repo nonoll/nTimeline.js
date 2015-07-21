@@ -3,7 +3,7 @@ GSAP - Timeline 애니메이션 컨트롤러 UI 구성을 위한 플러그인
 
 화면 구성 및 플러그인을 ajax로 로드 하므로 로컬에서 테스트시 크롬으로 할것
 
-[크롬 로컬 ajax 설정]( http://blog.naver.com/nonoll88/220302452764 "크롬 로컬 ajax 설정" {:target="_blank"}) 참조
+[크롬 로컬 ajax 설정]( http://blog.naver.com/nonoll88/220302452764 "크롬 로컬 ajax 설정" ) 참조
 
 #Screenshot
 ![ScreenShot](/screenshot/1.png)
