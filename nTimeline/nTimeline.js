@@ -488,13 +488,19 @@
 			, changeAlign : function( align ) {
 				var self = this;
 
+				if( $( 'div#nTimeline_area' ).length ) {
+					$( 'div#nTimeline_area' ).remove();
+				};
+
 				switch( align ) {
 					case 'bottom':
+						$( 'body' ).prepend( '<div id=\'nTimeline_area\'>' );
 						this.container.css( { 'top' : '0px', 'bottom' : '' } );
 						this.options.align = 'top';
 						break;
 					case 'top':
 					default:
+						$( 'body' ).append( '<div id=\'nTimeline_area\'>' );
 						this.container.css( { 'top' : '', 'bottom' : '0px' } );
 						this.options.align = 'bottom';
 						break;
