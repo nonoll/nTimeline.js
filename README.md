@@ -98,3 +98,4 @@ window.nTimeline.options = {
 
 ##History
 1. 2015.07.21 첫 버전 등록
+2. 2015.07.23 소스 및 데모 수정
