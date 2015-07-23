@@ -1,175 +1,54 @@
-/**
- * @description
- * 	Honda Propose Site
- * @author Fishingtree Dev( Hyunkwan Roh )
- */
+$(function() {
+    /*
+    Made possible by GreenSock Animation Platform (GSAP) v12 beta.
+    http://www.greensock.com/gsap-js/
 
-// Extreior ~ Sense
-function sec1() {
-	var tl = new TimelineLite(),
-		$section = $( 'div.section_1' ),
-		$text = $section.find( 'div.text' ),
-		$bg = $section.find( 'div.bg' );
+    This effect works great in modern browsers: Chrome, Safari, and FireFox.
 
-	tl.fromTo( $bg, 1, { opacity: 0 }, { opacity: 1 } );
-	tl.fromTo( $text, 1, { opacity: 0 }, { opacity: 1 }, "+=1" );
-	return tl;
-};
+    IE does not support transform-style:preserve3d, so the 3D may look a little flat. 
+    Once again IE proves its ability to hinder progress and inflict pain on developers.
+    http://msdn.microsoft.com/en-us/library/ie/hh673529(v=vs.85).aspx#_3dtranslate
+    */
 
-// 달릴수록 ~ 경제성
-function sec2() {
-	var tl = new TimelineLite(),
-		$section = $( 'div.section_2' ),
-		$bg = $section.find( 'div.bg' ),
-		$effect = $section.find( 'div.effect' ),
-		$text_title = $section.find( 'div.text.title' ),
-		$text_desc = $section.find( 'div.text.desc' ),
-		$info = $section.find( 'div.info' );
+    var trans3DDemo = $("#trans3DDemo"), 
+        trans3DBoxes = $("#trans3DBoxes"),// div containing all the orange boxes
+        boxes = $("#trans3DBoxes div"), // all orange boxes   
+        threeDTimeline = new TimelineLite(); //onUpdate allows the slider to stay in sync as animation plays
+        
+    //transformPerspective gives the element its own vanishing point
+    //perspective allows all the child elements (orange boxes) to share the same vanishing point with each other
+    //transformStyle:"preserve3d" allows the child elements to maintain their 3D position (noticeable only when their parent div is rotated in 3D space)
+    TweenLite.set(trans3DBoxes, {css:{transformPerspective:400, perspective:400, transformStyle:"preserve-3d"}}); //saves a dozen lines of vendor-prefixed css ;)
 
-	tl.fromTo( $bg, 2, { opacity: 0, marginTop: -379 }, { opacity: 1, marginTop: 0, ease: Strong.easeInOut }, 0 );
-	tl.fromTo( $effect, 1.5, { opacity: 0 }, { opacity: 1, ease: Bounce.easeOut }, '-=0.5' );
-	tl.fromTo( $text_title.find( 'img' ), 1, { opacity: 0, marginTop: 38 }, { opacity: 1, marginTop: 0, ease: Strong.easeInOut }, '-=2.5' );
-	tl.fromTo( $text_desc, 2, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut }, '-=2.5' );
-	tl.fromTo( $info, 2, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut }, '-=2' );
-	return tl;
-};
+    //fade in demo, rotate the div containing all the boxes, and add a label 0.2 seconds after the rotation
+    threeDTimeline.fromTo(trans3DDemo, .05, {css:{autoAlpha:0}}, {css:{autoAlpha:1}, immediateRender:true})
+                  .to(trans3DBoxes, 0.3, {css:{rotationY:30, rotationX:20}})
+                  .add("z", "+=0.2"); //add label "z" for placement of next group of tweens
 
-// 드라이빙~쾌적함까지
-function sec7() {
-	var tl = new TimelineLite(),
-		$section = $( 'div.section_7' ),
-		$bg = $section.find( 'div.bg' ),
-		$effect = $section.find( 'div.effect' ),
-		$text_title = $section.find( 'div.text.title' ),
-		$text_desc = $section.find( 'div.text.desc' ),
-		$info = $section.find( 'div.info' ),
-		$con1 = $section.find( 'div.con_1' ),
-		$con2 = $section.find( 'div.con_2' ),
-		$area = $section.find( 'area' );
+    //loop through each element in boxes object and give it a unique and random animation along the z-axis
+    boxes.each(function (index, element) {
+      threeDTimeline.to(element, 0.2, {css:{z:getRandom(-50, 50)}}, "z"); //place each z-tween of each box at the label "z"
+    })
+        
+    //rotate the group of boxes around a few more times  
+    threeDTimeline.to(trans3DBoxes, 1, {css:{rotationY:180, z:-180}, ease:Power2.easeOut}, "+=0.2")
+                  .to(trans3DBoxes, 1, {css:{rotationX:180, z:-10}});
+          
+    //random explosion effect     
+    boxes.each(function (index, element) {
+      threeDTimeline.to(element, 1, {css:{z:200, backgroundColor:Math.random() * 0xffffff, rotationX:getRandom(-360, 600), rotationY:getRandom(-360, -600), autoAlpha:0}}, "explode");
+    });
 
-	$con2.hide();
+    function getRandom(max, min){
+        return Math.floor(Math.random() * (1 + max - min) + min);
+    };
 
-	$area.click(function(event) {
-		event.preventDefault();
-
-		var href = $(this).attr( 'href' );
-		switch( href ) {
-			case '#con_1':
-				$con1.stop().fadeIn();
-				$con2.stop().fadeOut();
-				$con1.find( 'div.spot' ).stop().hide( 0 );
-				$con1.find( 'div.spot' ).stop().delay( 300 ).fadeIn( 500 );
-				break;
-			case '#con_2':
-				$con1.stop().fadeOut();
-				$con2.find( 'div.spot' ).stop().hide( 0 );
-				$con2.stop().fadeIn();
-				$con2.find( 'div.spot' ).stop().delay( 300 ).fadeIn( 500 );
-				break;
-			case '#spot':
-				//alert( 'spot' );
-				$( 'div.pop' ).show();
-				$( 'div.dim' ).show();
-				break;
-		};
-	});
-
-	$( 'div.pop' ).find( 'area' ).click(function(event) {
-		event.preventDefault();
-
-		$( 'div.pop' ).hide();
-		$( 'div.dim' ).hide();
-	});
-
-	tl.fromTo( $text_title.find( 'img' ), 2, { opacity: 0, marginLeft: -100 }, { opacity: 1, marginLeft: 0, ease: Strong.easeInOut }, 0 );
-	tl.fromTo( $text_desc.find( 'img' ), 2, { opacity: 0, marginLeft: 100 }, { opacity: 1, marginLeft: 0, ease: Strong.easeInOut }, 0 );
-
-	tl.fromTo( $con1.find( 'div.menu' ), 2, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut }, '-=1.5' );
-	tl.fromTo( $con1.find( 'div.car' ).find( 'img' ), 1.5, { opacity: 0, marginLeft: 5 }, { opacity: 1, marginLeft: 0, ease: Strong.easeInOut }, '-=1.5' );
-	tl.fromTo( $con1.find( 'div.spot' ), 2, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut }, '-=0.5' );
-	return tl;
-};
-
-// 차량내 인테리어
-function sec8() {
-	var tl = new TimelineLite(),
-		$section = $( 'div.section_8' ),
-		$obj1 = $section.find( 'div.obj1' ),
-		$obj2 = $section.find( 'div.obj2' ),
-		$obj3 = $section.find( 'div.obj3' );
-
-	tl.fromTo( $obj1.find( 'img' ), 1.5, { opacity: 0, marginTop: 269 }, { opacity: 1, marginTop: 0, ease: Strong.easeInOut }, 0 );
-	tl.fromTo( $obj2.find( 'img' ), 1.5, { opacity: 0, marginTop: -270 }, { opacity: 1, marginTop: 0, ease: Strong.easeInOut }, '-=1.2' );
-	tl.fromTo( $obj3.find( 'img' ), 1.5, { opacity: 0, marginTop: -270 }, { opacity: 1, marginTop: 0, ease: Strong.easeInOut }, '-=1' );
-	return tl;
-};
-
-// Earth ~ Tech
-function sec9() {
-	var tl = new TimelineLite(),
-		$section = $( 'div.section_9' ),
-		$text_title = $section.find( 'div.text.title' ),
-		$text_desc = $section.find( 'div.text.desc' ),
-		$indi = $section.find( 'div.indi' ),
-		$effect = $section.find( 'div.effect' ),
-		$car = $section.find( 'div.car' );
-
-	tl.fromTo( $car.find( 'img' ), 2.5, { opacity: 0, marginLeft: -896 }, { opacity: 1, marginLeft: 0, ease: Strong.easeInOut }, 0 );
-	tl.fromTo( $effect, 1.5, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut } );
-
-	tl.fromTo( $text_title.find( 'img' ), 1, { opacity: 0, marginLeft: -150 }, { opacity: 1, marginLeft: 0, ease: Strong.easeInOut }, '-=3' );
-	tl.fromTo( $text_desc, 1.5, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut }, '-=1.5' );
-	tl.fromTo( $indi, 1.5, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut }, '-=1' );
-	return tl;
-};
-
-// Belief ~ Safe
-function sec10() {
-	var tl = new TimelineLite(),
-		$section = $( 'div.section_10' ),
-		$text_title = $section.find( 'div.text.title' ),
-		$text_desc = $section.find( 'div.text.desc' ),
-		$indi = $section.find( 'div.indi' ),
-		$effect = $section.find( 'div.effect' ),
-		$car = $section.find( 'div.car' ),
-		$line = $section.find( 'div.line img' );
-
-	tl.fromTo( $car.find( 'img' ), 3, { opacity: 0, marginTop: -250, marginRight: -500 }, { opacity: 1, marginTop: 0, marginRight: 0, ease: Back.easeInOut.config(0.7) }, 0 );
-	tl.fromTo( $effect, 3, { marginTop: -250, marginRight: -500 }, { marginTop: 0, marginRight: 0, ease: Back.easeInOut.config(0.7) }, 0 );
-	tl.fromTo( $effect, 1, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut }, '-=1.5' );
-
-	tl.fromTo( $line.eq( 0 ), 1, { opacity: 0 }, { opacity: 0.4, ease: Strong.easeInOut }, '-=1.5' );
-	tl.fromTo( $line.eq( 1 ), 1, { opacity: 0 }, { opacity: 0.4, ease: Strong.easeInOut }, '-=1.2' );
-	tl.fromTo( $line.eq( 2 ), 1, { opacity: 0 }, { opacity: 0.4, ease: Strong.easeInOut }, '-=1' );
-	tl.fromTo( $line.eq( 3 ), 1, { opacity: 0 }, { opacity: 0.4, ease: Strong.easeInOut }, '-=0.8' );
-
-	tl.fromTo( $text_title.find( 'img' ), 1, { opacity: 0, marginLeft: -150 }, { opacity: 1, marginLeft: 0, ease: Strong.easeInOut }, '-=2' );
-	tl.fromTo( $text_desc, 1.5, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut }, '-=1.5' );
-	tl.fromTo( $indi, 1.5, { opacity: 0 }, { opacity: 1, ease: Strong.easeInOut }, '-=1' );
-	return tl;
-};
-
-$(document).ready(function() {
-	var master = new TimelineMax();
-	master.add( sec1() )
-			.add( sec2() )
-			.add( sec7() )
-			.add( sec8() )
-			.add( sec9() )
-			.add( sec10() );
-	/*
-	window.nTimeline.init({ 
-							timeline : master
-							, align: 'top'
-							});
-	*/
-
-	window.nTimeline.init({ 
-							timeline : master
-							, autorun : true
-							, repeat : false
-							, debug : true
-							, modulePath : './nTimeline/'
-							, align: 'top'
-							});
+    window.nTimeline.init({ 
+                            timeline : threeDTimeline
+                            , autorun : true
+                            , repeat : false
+                            , debug : true
+                            , modulePath : './nTimeline/'
+                            , align: 'top'
+                            });
 });

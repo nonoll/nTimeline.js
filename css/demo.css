@@ -1,180 +1,42 @@
 @charset "utf-8";
 
-/*기본태그 정의*/
-html, body {padding:0;margin:0;height:100%;}
-body, /*td*/ select, textarea, input {font-size:12px;font-family:'돋움','Dotum', 'verdana';color:#666;}
+body {background-color:black;}
+img {margin:10px;}
 
-/* body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,select,textarea,p,blockquote,th,td,legend,button{margin:0;padding:0;color:#666;font-family:'돋움','Dotum', 'verdana';font-weight:normal;font-size:12px;-webkit-text-size-adjust:none;}사파리 회전시 폰트 크기 고정하기 */
+div.wrap { 
+  position: relative;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
 
-/* 마진과 패딩의 초기화 */
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {margin:0;padding:0;}
-img{ vertical-align:top}
+#trans3DDemo {
+  position:absolute;
+  top:70px;
+  left:240px;
+  width:240px;
+}
 
-body{  overflow-x: hidden;}
+#trans3DBoxes div {
+  position:relative;
+  width:60px;
+  height:60px;
+  background-color:#f60;
+  margin-right:10px;
+  margin-bottom:10px;
+  border:solid 2px #FFF;
+  display:inline-block;
+}
 
-/* 리스트의 스타일 제거 */
-ol, ul {list-style:none;}
+#nav {
+  position:absolute;
+  width:600px;
+  left:50px;
+  top:400px;
+}
 
-/* 테이블 스타일 초기화 */
-table {border-collapse:collapse;border-spacing:0;table-layout:fixed;}
-
-/* 이미지 및 필드셋에서 보더 표시 초기화 */
-fieldset, img {border:0;}
-
-/* 캡션 텍스트 정렬 초기화 */
-caption {text-align:left;}
-
-/* 폼태그의 초기화 */
-select {font-size:12px;font-family:'돋움','Dotum', 'verdana';vertical-align:middle;color:#666666;}
-input {font-size:12px;font-family:'돋움','Dotum', 'verdana';vertical-align:middle;color:#666666;}
-textarea {font:12px;font-family:'돋움','Dotum', 'verdana';line-height:140%;color:#666666;}
-input.radio {vertical-align:middle;}
-/* a{display:block} */
-a:link    {color:#666666; text-decoration:none;}
-a:active    {color:#666666; text-decoration:none;}
-a:visited    {color:#666666; text-decoration:none;}
-a:hover    {color:#666666; text-decoration:none;}
-
-/* hidden 처리 */
-caption{width:0;height:0;font-size:0;line-height:0;overflow:hidden;visibility:hidden;}
-.hide,hr{position:absolute;top:-9999px;width:0;height:0;font-size:0;line-height:0;overflow:hidden;visibility:hidden;}
-
-
-body{ }
-
-.dim{  position: fixed;  width: 100%;  height: 100%;  top: 0;  left: 0;  z-index: 3000;  background: #000;  filter: alpha(opacity=80);  opacity: 0.8;  -moz-opacity: 0.8; display:none}
-.pop { position:fixed; top:50px; left:0; width:100%; z-index:6000; text-align: center; display: none; }
-
-.wrap{ width:1280px; margin:0 auto; position:relative; /*background: url( '../images/car_sub_guide.jpg') -160px 0;*/  }
-.wrap .top .over{ position:absolute; top:113px; display:none; z-index:100}
-.wrap .kv  { width:1280px; height:548px; overflow:hidden;}
-.wrap .kv .ani{ background:url(../images/car_sub_kv.png) center center no-repeat; background-size:1600px; width:1280px; height:548px; position:absolute; z-index:100}
-
-.wrap .fix_menu { position: absolute; top: 662px; width: 100%; height: 56px; background: url( '../images/car_sub_fix_blank.png' ); z-index: 1000; }
-.wrap .fix_menu.fixed { position: fixed !important; top: 0px !important; }
-.wrap .fix_menu ul { position: relative; *zoom:1;}
-.wrap .fix_menu ul:after{content: ''; display: block; clear: both;}
-.wrap .fix_menu ul li { float: left; }
-
-.wrap .contents { position: relative; width: 1280px; overflow: hidden; }
-
-.wrap .contents .section_1 { position: relative; height: 570px; }
-.wrap .contents .section_1 .text { position: absolute; top: 328px; left: 415px; }
-.wrap .contents .section_1 .bg { margin-left: -160px; }
-
-.wrap .contents .section_2 { position: relative; height: 1067px; overflow: hidden; }
-.wrap .contents .section_2 .text { position: absolute; top: 546px; left: 277px; }
-.wrap .contents .section_2 .text.title { height: 38px; overflow: hidden; }
-.wrap .contents .section_2 .text.desc { height: 106px; margin-top: 38px; overflow: hidden; }
-.wrap .contents .section_2 .text.desc img { margin-top: -38px; }
-.wrap .contents .section_2 .effect { position: absolute; margin-left: -160px; top: 24px; }
-.wrap .contents .section_2 .bg { margin-left: -160px; }
-.wrap .contents .section_2 .info { margin-left: -160px; position: absolute; top: 744px; }
-
-.wrap .contents .section_3 { position: relative; height: 600px; }
-.wrap .contents .section_3 .con_1 { position: absolute; z-index: 100; }
-.wrap .contents .section_3 .con_1 .bg { margin-left: -160px; }
-.wrap .contents .section_3 .con_1 .car { position: absolute; margin-left: -160px; }
-.wrap .contents .section_3 .con_1 .text { position: absolute; top: 100px; left: 155px; }
-.wrap .contents .section_3 .con_1 .icon { position: absolute; z-index: 100; margin-left: -160px; }
-
-.wrap .contents .section_3 .con_2 { position: absolute; display: none; z-index: 200; }
-.wrap .contents .section_3 .con_2 .car { position: absolute; margin-left: -160px; }
-.wrap .contents .section_3 .con_2 .effect { position: absolute; margin-left: -160px; z-index: 100; }
-.wrap .contents .section_3 .con_2 .text { position: absolute; margin-left: -160px; z-index: 200; }
-
-.wrap .contents .section_4 { position: relative;}
-.wrap .contents .section_4 .text { position: absolute; top: 137px; left: 821px; }
-.wrap .contents .section_4 .effect { position: absolute; margin-left: -160px; }
-.wrap .contents .section_4 .obj { position: absolute; margin-left: -160px; }
-.wrap .contents .section_4 .car { margin-left: -160px; }
-
-.wrap .contents .section_5 { position: relative; height: 695px; }
-.wrap .contents .section_5 .text { position: absolute; top: 116px; left: 155px; }
-.wrap .contents .section_5 .effect { position: absolute; right: -160px; top: -71px; z-index: 100; }
-.wrap .contents .section_5 .car { position: absolute; right: -160px; top: -71px; }
-
-.wrap .contents .section_6 { position: relative;  }
-.wrap .contents .section_6 .text { position: absolute; top: 307px; left: 449px; }
-.wrap .contents .section_6 .bg { margin-left: -160px; }
-
-
-.wrap .contents .section_7 { position: relative; height: 1164px; }
-.wrap .contents .section_7 .text { position: absolute; top: 150px; left: 345px; z-index: 200; }
-.wrap .contents .section_7 .text.title { height: 95px; overflow: hidden; }
-.wrap .contents .section_7 .text.desc { height: 106px; margin-top: 95px; overflow: hidden; }
-.wrap .contents .section_7 .text.desc img { margin-top: -95px; }
-
-.wrap .contents .section_7 .con_1 { position: absolute; z-index: 100; }
-.wrap .contents .section_7 .con_1 .car { position: absolute; margin-left: -160px; }
-.wrap .contents .section_7 .con_1 .spot { position: absolute; margin-left: -160px; z-index: 100; }
-.wrap .contents .section_7 .con_1 .menu { position: absolute; margin-left: -160px; z-index: 200; }
-
-.wrap .contents .section_7 .con_2 { position: absolute; display: none; z-index: 200; }
-.wrap .contents .section_7 .con_2 .car { position: absolute; margin-left: -160px; }
-.wrap .contents .section_7 .con_2 .spot { position: absolute; margin-left: -160px; z-index: 100; }
-.wrap .contents .section_7 .con_2 .menu { position: absolute; margin-left: -160px; z-index: 200; }
-
-.wrap .contents .section_8 { position: relative; height: 539px; }
-.wrap .contents .section_8 .obj { position: absolute; margin-left: -160px; overflow: hidden; height: 270px; }
-.wrap .contents .section_8 .obj2 { top: 269px; }
-.wrap .contents .section_8 .obj3 { top: 269px; }
-
-
-.wrap .contents .section_9 { position: relative; height: 490px; }
-.wrap .contents .section_9 .text { position: absolute; top: 292px; left: 820px; }
-.wrap .contents .section_9 .effect { position: absolute; margin-left: -160px; }
-.wrap .contents .section_9 .indi { position: absolute; margin-left: -160px; }
-.wrap .contents .section_9 .car { margin-left: -160px; }
-.wrap .contents .section_9 .text.title { height: 95px; overflow: hidden; }
-.wrap .contents .section_9 .text.desc { height: 316px; margin-top: 95px; overflow: hidden; }
-.wrap .contents .section_9 .text.desc img { margin-top: -95px; }
-
-
-
-.wrap .contents .section_10 { position: relative; height: 1179px; }
-.wrap .contents .section_10 .text { position: absolute; top: 524px; left: 154px; }
-.wrap .contents .section_10 .effect { position: absolute; right: -160px; z-index: 200; }
-.wrap .contents .section_10 .indi { position: absolute; margin-left: -160px; top: 465px; }
-.wrap .contents .section_10 .car { position: absolute; right: -160px; z-index: 100; }
-.wrap .contents .section_10 .line { position: absolute; right: 58px; top: 454px; width: 669px; height: 708px; z-index: 10; }
-.wrap .contents .section_10 .line img { position: absolute; }
-.wrap .contents .section_10 .text.title { height: 100px; overflow: hidden; }
-.wrap .contents .section_10 .text.desc { height: 316px; margin-top: 95px; overflow: hidden; }
-.wrap .contents .section_10 .text.desc img { margin-top: -95px; }
-
-.wrap .contents .section_11 { position: relative; }
-.wrap .contents .section_11 .bg { margin-left: -160px; }
-
-.wrap .contents .section_12 { position: relative; height: 1170px; }
-.wrap .contents .section_12 .vr { position: absolute; top: 0px; margin-left: -160px; }
-.wrap .contents .section_12 .vr img { position: absolute; visibility: hidden; }
-.wrap .contents .section_12 .text { position: absolute; top: 0px; margin-left: -160px; height: 301px; overflow: hidden; }
-.wrap .contents .section_12 .bg { margin-left: -160px; height: 594px; overflow: hidden; }
-.wrap .contents .section_12 .info { margin-left: -160px; }
-
-.wrap .footer { position: relative; width: 1280px; overflow: hidden; }
-.wrap .footer img { margin-left: -160px; }
-
-.wrap .kv .bg {  margin-left: -160px; }
-.wrap .kv .vr { position: absolute; top: 0px; margin-left: -160px; }
-.wrap .kv .vr img { position: absolute; visibility: hidden; }
-.wrap .kv .text { position: absolute; top: 65px; left: 365px; height: 301px; overflow: hidden; }
-.wrap .kv .text img { opacity: 0; }
-.wrap .kv .text.title { height: 100px; overflow: hidden; }
-.wrap .kv .text.desc { height: 316px; margin-top: 95px; overflow: hidden; }
-.wrap .kv .text.desc img { margin-top: -95px; }
-
-.wrap .fix_menu ul div{ position:absolute; top:0px; left: 125px; display:none; cursor:pointer}
-
-.gj { position: absolute; top: 1280px; z-index: 900; display: none; cursor: pointer; }
-.gj img { position: absolute; }
-
-.bigyo { position: absolute; top: 1280px; z-index: 900; display: none; cursor: pointer; }
-.bigyo img { position: absolute; }
-
-
-/* remember to define focus styles! */
-:focus {
-outline: 0;
+#play_btn, .play {
+  float:right;
+  margin-top:20px;
 }
